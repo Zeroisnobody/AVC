@@ -1,0 +1,56 @@
+//
+//  Code for the Maze Section
+//  skeleton - print outputs
+//
+//  Created by Bryony Gatehouse on 5/05/18.
+//  Copyright © 2018 Bryony Gatehouse. All rights reserved.
+//
+
+#include <stdio.h>
+#include <time.h>
+#include "E101.h"
+
+int main(){
+    init();
+    while (true){
+        
+        left = Read_Sensor(0);
+        right = Read_Sensor(1);
+        front = Read_Sensor(2);
+        
+        if(left>right){
+            printf("Turn Left: %d", left-right);
+        }
+        else if(right>left){
+            printf("Turn Right: %d", right-left);
+        }
+        else if(front>50 && right=left){ // 50 as a guess
+            printf("Turn Around: %d", front);
+        }
+        else if(right=left){
+            printf("Straight");
+        }
+    }
+    return 0;
+}
+    
+int Read_Sensor(int sensor){
+    int half_range;
+    int adc_readingmax;
+    int adc_readingmin;
+    int adc_reading;
+    int i;
+    for (i=0; i<10;i=i+1) {
+        adc_reading = read.analog(sensor);
+        if (adc_reading > adc_readingmax){
+            adc_readingmax = adc_reading; }
+        if (adc_reading < adc_readingmin){
+            adc_readingmin = adc_reading;}
+        sleep1(0,10000);
+    }
+    half_range = (adc_readingmax - adc_readingmin)/2;
+    printf("Reading Max = %d\n", adc_readingmax);
+    printf("Reading Min = %d\n", adc_readingmin);
+    sleep1 (0, 500000);
+    return half_range;
+}
