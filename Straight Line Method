@@ -55,6 +55,7 @@ unsigned char get_pixel( int row,int col, int color)
 int main()
 {
     init();
+    int scan_row = 120;
     while (true) {
         int take_picture();
         int max = 0;
