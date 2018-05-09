@@ -13,15 +13,19 @@
 double e0 = 0;
 time_t t0;
 
+int a = Read_Sensor(0);
+int b = Read_Sensor(1);
+int dist = a+b;
+
 int main(){
     init();
     int scan_row = 120;
     while (true){
         
-       left = Read_Sensor(0);
-       right = Read_Sensor(1);
-       front = Read_Sensor(2);
-       int error = (left+right)/2;
+       int left = Read_Sensor(0);
+       int right = Read_Sensor(1);
+       int front = Read_Sensor(2);
+       int error = (left-right)/2;
        
        unsigned char v_go = 0; //change
        double de = error - e0;
@@ -32,6 +36,9 @@ int main(){
        
        double v_left = v_go + dv;
        double v_right = v_go - dv;
+       
+       if (left+right > dist){
+            ;
        
        if(front>50){ // 50 as a guess
             printf("Turn Around: %d", front);
