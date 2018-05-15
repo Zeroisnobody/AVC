@@ -6,6 +6,14 @@
 // Copyright © 2018 Bryony Gatehouse. All rights reserved.
 //
 
+
+// if find a side route, move forwards till can't find line than turn
+// if the line continues straight then it won't turn cause it won't loose the line
+// if do lose line and have two options always turn left
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
